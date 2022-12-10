@@ -18,7 +18,7 @@ function NewReview({ addRev }) {
 
   function handleSubmit(e) {
     e.preventDefault()
-    fetch(`http://127.0.0.1:3000/reviews`, {
+    fetch(`football.up.railway.app/reviews/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -26,8 +26,9 @@ function NewReview({ addRev }) {
       body: JSON.stringify(newReviewData),
     })
       .then((res) => res.json())
-      .then((data) => addRev(data));
+      .then((data) => addRev({data}));
   }
+
 
 
   return (

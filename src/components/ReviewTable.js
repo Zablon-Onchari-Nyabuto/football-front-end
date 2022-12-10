@@ -3,7 +3,7 @@ import React from "react";
 function ReviewTable({ reviews, onDelete, handleUpdateReview }) {
   function handleDelete(e) {
     e.preventDefault()
-    fetch(`http://127.0.0.1:3000/reviews`, {
+    fetch(`football.up.railway.app/reviews`, {
       method: "DELETE",
     })
     .then((r) => r.json())

@@ -1,12 +1,12 @@
 import Container from 'react-bootstrap/esm/Container';
 import Nav from 'react-bootstrap/esm/Nav';
 import Navbar from 'react-bootstrap/esm/Navbar';
-import { Button }from "../styles";
+import { Button } from "../styles";
 
 
 function NavBar({ user, setUser }) {
     function handleLogoutClick() {
-        fetch("/logout", { method: "DELETE" }).then((r) => {
+        fetch(`football.up.railway.app/logout`, { method: "DELETE" }).then((r) => {
             if (r.ok) {
                 setUser(null);
             }
@@ -16,13 +16,24 @@ function NavBar({ user, setUser }) {
         <Navbar bg="dark" variant="dark">
             <Container>
                 <Nav className="me-auto">
-                    <Nav.Link href="homepage">Home</Nav.Link>
+                    <Nav.Link href="/">Home</Nav.Link>
                     <Nav.Link href="forum">Forum</Nav.Link>
                     <Nav.Link href="aboutus">About Us</Nav.Link>
                     <Nav.Link href="contactus">Contact Us</Nav.Link>
-                    <Button variant="outline" onClick={handleLogoutClick}>
-                        Logout
-                    </Button>
+                    <div>
+                        {user ? (
+                            // <Button variant="outline" onClick={handleLogoutClick}>
+                            //     Logout
+                            // </Button>
+                            <Nav.Link href="logout"><Button variant="outline" onClick={handleLogoutClick}>Log out</Button></Nav.Link>
+                        ) : (
+                    <>
+                        {/* <Nav.Link to="/signup">Signup</Nav.Link>
+                        <Nav.Link to="/login">Login</Nav.Link> */}
+                    </>
+                        )}
+</div>
+                    {/* <Nav.Link href="logout"><Button variant="outline" onClick={handleLogoutClick}>Log out</Button></Nav.Link> */}
                 </Nav>
             </Container>
         </Navbar>

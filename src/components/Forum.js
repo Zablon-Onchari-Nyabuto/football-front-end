@@ -5,13 +5,13 @@ import ReviewList from "./ReviewList";
 function Forum() {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    fetch(`http://127.0.0.1:3000/reviews`)
+    fetch(`football.up.railway.app/reviews/`)
       .then((r) => r.json())
-      .then(data => setReviews(data))
+      .then(reviews => setReviews(reviews))
   }, []);
 
   function addReview(newReview) {
-    // const updatedReview = setReviews(reviews => [...reviews, newReview])
+    const updatedReview = setReviews(reviews => [...reviews, newReview])
   }
 
   return (
