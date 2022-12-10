@@ -45,8 +45,8 @@ form {
   width: 400px;
   margin: 0 auto;
   padding: 0 1rem 1rem;
-  position: relative;
-       z-index: 2;
+  /* position: relative;
+       z-index: 2; */
 }
 
 form input {

@@ -1,25 +1,33 @@
 import React, { useState } from "react";
 import { Button, Error, Input, FormField, Label } from "../styles";
+import { useNavigate} from 'react-router-dom';
 
-function LoginForm({ onLogin }) {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+function LoginForm({ onLogin, setUser }) {
+    const navigate = useNavigate();
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [errors, setErrors] = useState([]);
+    const [isLoading, setIsLoading] = useState();
+  
 
   function handleSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
-    fetch('football-production.up.railway.app/login', {
+    fetch('football.up.railway.app/login', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Accept": "application/json"
       },
       body: JSON.stringify({ username, password }),
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then((user) => onLogin(user));
+        r.json().then((user) => {
+            onLogin(user)
+            navigate("/")
+            localStorage.setItem("me", JSON.stringify(user))
+        });
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
@@ -54,7 +62,7 @@ function LoginForm({ onLogin }) {
         </Button>
       </FormField>
       <FormField>
-        {errors.map((err) => (
+        {errors?.map((err) => (
           <Error key={err}>{err}</Error>
         ))}
       </FormField>

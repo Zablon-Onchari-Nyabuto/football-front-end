@@ -5,7 +5,7 @@ import ReviewList from "./ReviewList";
 function Forum() {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    fetch(`football.up.railway.app/reviews/`)
+    fetch(`football.up.railway.app/reviews`)
       .then((r) => r.json())
       .then(reviews => setReviews(reviews))
   }, []);

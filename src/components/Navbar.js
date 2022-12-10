@@ -13,7 +13,7 @@ function NavBar({ user, setUser }) {
         });
     }
     return (
-        <Navbar bg="dark" variant="dark">
+        <Navbar bg="dark" variant="dark" >
             <Container>
                 <Nav className="me-auto">
                     <Nav.Link href="/">Home</Nav.Link>
@@ -21,17 +21,7 @@ function NavBar({ user, setUser }) {
                     <Nav.Link href="aboutus">About Us</Nav.Link>
                     <Nav.Link href="contactus">Contact Us</Nav.Link>
                     <div>
-                        {user ? (
-                            // <Button variant="outline" onClick={handleLogoutClick}>
-                            //     Logout
-                            // </Button>
-                            <Nav.Link href="logout"><Button variant="outline" onClick={handleLogoutClick}>Log out</Button></Nav.Link>
-                        ) : (
-                    <>
-                        {/* <Nav.Link to="/signup">Signup</Nav.Link>
-                        <Nav.Link to="/login">Login</Nav.Link> */}
-                    </>
-                        )}
+                    <Nav.Link href="loginform"><Button variant="outline" onClick={handleLogoutClick}>Log out</Button></Nav.Link>
 </div>
                     {/* <Nav.Link href="logout"><Button variant="outline" onClick={handleLogoutClick}>Log out</Button></Nav.Link> */}
                 </Nav>

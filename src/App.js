@@ -25,14 +25,14 @@ function App() {
     });
   }, []);
 
-  // if (!user) return <LoginForm onLogin={setUser} />;
+  // if (!user) return <LoginForm onLogin={user} />;
 
   return (
     <BrowserRouter>
       <div className='App'>
         <NavBar user={user} setUser={setUser} />
         <Routes>
-          <Route path={'/*'} element={<LoginForm setUser={setUser} />} />
+          <Route path={'/loginform'} element={<LoginForm setUser={setUser} onlogin={user} />} />
           <Route path={'/signup'} element={<SignUpForm setUser={setUser} />} />
           <Route path={'/'} element={<Homepage user={user} />} />
           <Route path={"/forum"} element={<Forum />} />
